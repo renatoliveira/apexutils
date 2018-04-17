@@ -9,34 +9,34 @@ global class BRPhoneMask {
      *
      * @param records Account records
      */
-	global void createPhoneMasks (List<Account> records) {
-		for (Account record : records) {
-			if (record.PersonMobilePhone.isAlphanumeric() && isValidPhoneLength(record.PersonMobilePhone)) {
-				record.PersonMobilePhone = createPhoneMask(record.PersonMobilePhone);
-			}
-			if (record.PersonHomePhone.isAlphanumeric() && isValidPhoneLength(record.PersonHomePhone)) {
-				record.PersonHomePhone = createPhoneMask(record.PersonHomePhone);
-			}
-			if (record.Phone.isAlphanumeric() && isValidPhoneLength(record.Phone)) {
-				record.Phone = createPhoneMask(record.Phone);
-			}
-			if (record.PersonOtherPhone.isAlphanumeric() && isValidPhoneLength(record.PersonOtherPhone)) {
-				record.PersonOtherPhone = createPhoneMask(record.PersonOtherPhone);
-			}
-		}
-	}
+    global void createPhoneMasks (List<Account> records) {
+        for (Account record : records) {
+            if (record.PersonMobilePhone.isAlphanumeric() && isValidPhoneLength(record.PersonMobilePhone)) {
+                record.PersonMobilePhone = createPhoneMask(record.PersonMobilePhone);
+            }
+            if (record.PersonHomePhone.isAlphanumeric() && isValidPhoneLength(record.PersonHomePhone)) {
+                record.PersonHomePhone = createPhoneMask(record.PersonHomePhone);
+            }
+            if (record.Phone.isAlphanumeric() && isValidPhoneLength(record.Phone)) {
+                record.Phone = createPhoneMask(record.Phone);
+            }
+            if (record.PersonOtherPhone.isAlphanumeric() && isValidPhoneLength(record.PersonOtherPhone)) {
+                record.PersonOtherPhone = createPhoneMask(record.PersonOtherPhone);
+            }
+        }
+    }
 
     /**
      * Create the mask, based on the phone number provided.
      */
-	global String createPhoneMask(String phoneNumberAsString) {
-		if (phoneNumberAsString.length() == 10) {
+    global String createPhoneMask(String phoneNumberAsString) {
+        if (phoneNumberAsString.length() == 10) {
             return String.format('({0}) {1}-{2}', new List<String>{
                 phoneNumberAsString.substring(0,2),
                 phoneNumberAsString.substring(2,6),
                 phoneNumberAsString.substring(6,10)
             });
-		} else if (phoneNumberAsString.length() == 11) {
+        } else if (phoneNumberAsString.length() == 11) {
             return String.format('({0}) {1}-{2}', new List<String>{
                 phoneNumberAsString.substring(0,2),
                 phoneNumberAsString.substring(2,7),
