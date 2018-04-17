@@ -29,7 +29,7 @@ global class BRPhoneMask {
     /**
      * Create the mask, based on the phone number provided.
      */
-    global static String createPhoneMask(String phoneNumberAsString) {
+    global static String createPhoneMask (String phoneNumberAsString) {
         if (phoneNumberAsString.length() == 10) {
             return String.format('({0}) {1}-{2}', new List<String>{
                 phoneNumberAsString.substring(0,2),
