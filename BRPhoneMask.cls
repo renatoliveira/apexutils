@@ -9,7 +9,7 @@ global class BRPhoneMask {
      *
      * @param records Account records
      */
-    global void createPhoneMasks (List<Account> records) {
+    global static void createPhoneMasks (List<Account> records) {
         for (Account record : records) {
             if (record.PersonMobilePhone.isAlphanumeric() && isValidPhoneLength(record.PersonMobilePhone)) {
                 record.PersonMobilePhone = createPhoneMask(record.PersonMobilePhone);
@@ -29,7 +29,7 @@ global class BRPhoneMask {
     /**
      * Create the mask, based on the phone number provided.
      */
-    global String createPhoneMask(String phoneNumberAsString) {
+    global static String createPhoneMask(String phoneNumberAsString) {
         if (phoneNumberAsString.length() == 10) {
             return String.format('({0}) {1}-{2}', new List<String>{
                 phoneNumberAsString.substring(0,2),
@@ -49,7 +49,7 @@ global class BRPhoneMask {
     /**
      * Valid phone numbers should have either 10 or 11 digits.
      */
-    private Boolean isValidPhoneLength (String phone) {
+    private static Boolean isValidPhoneLength (String phone) {
         if (phone == null) {
             return false;
         }
